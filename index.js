@@ -28,6 +28,8 @@ const precioCart = document.querySelector(".precio-cart");
 const precioTotal = document.querySelector(".total");
 const containerFoto = document.querySelector(".container-imagen-cart");
 const butonDelete = document.getElementById("buton-delete");
+// thumbnail
+const carreteContainer = document.querySelector('.all-photos')
 //sideNav
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
@@ -35,32 +37,61 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
-// Slider
+// Slider mejorado
 function showSlides(n) {
-  let i;
   let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }  
-  slides[slideIndex-1].style.display = "block";
-
+  let image = document.querySelector('.productImage');
+  image.setAttribute("src", `images/image-product-${n}.jpg`)
+  slides[0].style.display = "block";
 }
-showSlides(slideIndex);
 // Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function prev() {
+  if(slideIndex>1){
+    slideIndex -=1
+    console.log(slideIndex)
+    showSlides(slideIndex);
+    currentPhoto(slideIndex);
+  }
+  return slideIndex
 }
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function next() {
+  if(slideIndex<4){
+    slideIndex +=1
+    showSlides(slideIndex);
+    currentPhoto(slideIndex);
+  }
+  return slideIndex
 }
-
+// no es funcional
+function allPhotos(){
+  for (let i = 1; i < 5; i++) {
+    let img = document.createElement('img');
+    img.src = `images/image-product-${i}-thumbnail.jpg`
+    img.id = i;
+    img.className = "fotoCarrete"
+    carreteContainer.appendChild(img);
+  }
+  let img1 = document.getElementById("1")
+  img1.style.filter = "initial";
+}
+function currentPhoto(cur){
+  let carrete = document.querySelectorAll('.fotoCarrete');
+  // Itera sobre todas las imágenes en el carrete
+  carrete.forEach((foto, index) => {
+    // Restablece el filtro de brillo para todas las imágenes
+    foto.style.filter = "brightness(0.5)";
+    // Destaca la imagen actual ajustando el brillo
+    if (index === cur - 1) {
+      foto.style.filter = "initial";
+    }
+  });
+}
+allPhotos();
+showSlides(slideIndex);
 const buttonCart = document.getElementById("cart-b");
 buttonCart.addEventListener('click',()=>{
   if(!activo){
-    document.getElementById("carrito").style.zIndex =1;
+    document.getElementById("carrito").style.zIndex = 1;
     document.getElementById("carrito").style.display = 'inline';
     activo=true;
   }else{

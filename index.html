@@ -20,6 +20,14 @@
       <span class="b-open" onclick="openNav()"><img src="images/icon-menu.svg" alt=""></span>
       <img src="images/logo.svg" alt="">
     </div>
+    <nav id="mySidenav" class="sidenav">
+      <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">Collections</a>
+      <a href="#">Men</a>
+      <a href="#">Women</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
     <div class="cart-perfil">
       <a href="#" id="cart-b"><img src="images/icon-cart.svg" alt="Carrito"></a>
       <a href="#" ><img src="images/image-avatar.png" class="image-perfil" alt="foto-perfil"></a>
@@ -41,33 +49,21 @@
           <a href="#" onclick="borrarCarrito()"><img id="buton-delete" src="images/icon-delete.svg" alt=""></a>
         </div>
     </div>
-    <nav id="mySidenav" class="sidenav">
-      <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#">Collections</a>
-      <a href="#">Men</a>
-      <a href="#">Women</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
   </header>
   <main>
     <div class="slideshow-container">
-      <div class="mySlides fade">
-        <img src="images/image-product-1.jpg" style="width:100%">
+        <div class="mySlides fade">
+          <a class="prev" onclick="prev()">&#10094; </a>
+          <img class="productImage"  style="width:100%;">
+          <a class="next" onclick="next()">&#10095;</a>
+        </div>
+      <div class="all-photos">
+        <!-- <img id="1" src="images/image-product-1-thumbnail.jpg" > -->
+        <!-- <img id="2" src="images/image-product-2-thumbnail.jpg" >
+        <img id="3" src="images/image-product-3-thumbnail.jpg" >
+        <img id="4" src="images/image-product-4-thumbnail.jpg" > -->
       </div>
-      <div class="mySlides fade">
-        <img src="images/image-product-2.jpg" style="width:100%">
-      </div>
-      <div class="mySlides fade">
-        <img src="images/image-product-3.jpg" style="width:100%">
-      </div>
-      <div class="mySlides fade">
-        <img src="images/image-product-4.jpg" style="width:100%">
-      </div>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-     
     <div class="info-producto-container">
       <p class="subtitulo">Sneaker Company</p>
       <h1 class="nombre-producto"></h1>
