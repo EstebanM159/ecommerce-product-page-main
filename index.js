@@ -33,6 +33,7 @@ const carreteContainer = document.querySelector('.all-photos')
 //sideNav
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
+  closeCart()
 }
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
@@ -91,16 +92,22 @@ showSlides(slideIndex);
 const buttonCart = document.getElementById("cart-b");
 buttonCart.addEventListener('click',()=>{
   if(!activo){
+    openCart()
+    closeNav()
+  }else{
+    closeCart()
+  }
+})
+function openCart(){
     document.getElementById("carrito").style.zIndex = 1;
     document.getElementById("carrito").style.display = 'inline';
     activo=true;
-  }else{
+}
+function closeCart(){
     document.getElementById("carrito").style.display = 'none';
     document.getElementById("carrito").style.zIndex =0;
     activo=false
-  }
-})
-
+}
 // Contador
 function sumar(){
   actual++
